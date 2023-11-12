@@ -13,7 +13,7 @@ class HandleRequests(http.server.BaseHTTPRequestHandler):
         time.sleep(3)
         self.send_header("Content-type","text/html")
         self.end_headers()
-        self.wfile.write(bytes("<html><head><title>First python Application</title></head></html>"))
+        self.wfile.write(bytes("<html><head><title>First python Application</title></head></html>",'utf-8'))
         self.wfile.close
         end_time= time.time()-start_time
         REQUEST_LATENCY_TIME.observe(end_time)
