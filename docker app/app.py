@@ -1,10 +1,10 @@
-from flask import Flask, request, response
+from flask import Flask, request, Response
 from prometheus_client import Counter, generate_latest
 REQUEST_COUNT = Counter("app_request_counter", "Total Number of Requests made of Application")
 
 app=Flask(__name__)
 
-@app.rote("/")
+@app.route("/")
 def hello_team():
     REQUEST_COUNT.inc()
     return "Hello Team, This is from Docker WSGI..."
