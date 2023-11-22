@@ -16,4 +16,5 @@ groups:
     rules:
     - alert: node_exporter_status
       expr: up{job='node_exporter'}==0
+      for: 2m
       
