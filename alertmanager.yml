@@ -2,10 +2,10 @@ route:
   receiver: admin
 receivers:
   - name: admin
-    email_config:
+    email_configs:
       - to: "bhskr150@gmail.com"
         from: "bhaskardm091@gmail.com"
         smarthost: smtp.gmail.com:587
         auth_username: "bhaskardm091@gmail.com"
         auth_identity: "bhaskardm091@gmail.com"
-        auth_password: ""
+        auth_password: "proi=vide 16 digit password"
