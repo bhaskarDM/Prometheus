@@ -14,7 +14,7 @@ groups:
         summary: "Node exporter is down"
         description: Node exporter is down for omore than 2 minutes
 
-    - rules: job:node_memory_Mem_bytes:available
+    - record: job:node_memory_Mem_bytes:available
       expr: (node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes)*100
 
     - alert: NodememoryusageAbove60%
