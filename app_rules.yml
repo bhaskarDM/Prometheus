@@ -1,0 +1,28 @@
+groups:
+  - name: pythonappRules
+    rules:
+    
+
+    - record: job:app_request_latency_sec:rate1m
+      expr: rate(request_latency_time_sum[1m])/rate(request_latency_time_count[1m])
+
+    - alert: App latencyAbove2sec
+      expr: 2< job:app_request_latency_sec:rate1m <5
+      for: 2m
+      labels:
+        severity: warning
+        app_type: python
+      annotations:
+        summary: 'python app latency is going high'
+        description: 'App latency of instance {{ $labels.instance }} of job {{ $labels.job }} is {{ $value }} for more than 5 Seconds.'
+
+
+    - alert: AppLatencyAbove5sec
+      expr: job:app_request_latency_seconds:rate1m >= 5
+      for: 2m
+      labels:
+        severity: critical
+        app_type: python
+      annotations:
+        summary: 'Python app latency is over 5 seconds.'
+        description: 'App latency of instance {{ $labels.instance }} of job {{ $labels.job }} is {{ $value }} for more than 5 Seconds.'
